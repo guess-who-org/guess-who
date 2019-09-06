@@ -4,8 +4,8 @@ const getUsers = _ => {
     return db('users');
 }
 
-const getUsersByName = (name) => {
-    return db("users").where({ name: name });
+const getUsersByName = (username) => {
+    return db("users").where({ username });
 }
 
 module.exports = {
