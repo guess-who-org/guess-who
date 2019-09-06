@@ -25,7 +25,7 @@ const getCelebById = (id) => {
     return db("celebs").where({ id: id });
 }
 
-const addCeleb = (name) => {
+const insertCeleb = (name) => {
     return db('celebs').insert({ name: name })
 }
 
@@ -47,7 +47,7 @@ const getTweetById = (id) => {
     return db("tweets").where({ id: id });
 }
 
-const addTweet = (contents) => {
+const insertTweet = (contents) => {
     return db('tweets').insert(contents)
 }
 
@@ -69,7 +69,7 @@ const getGameById = (id) => {
     return db("games").where({ id: id });
 }
 
-const addGame = (contents) => {
+const insertGame = (contents) => {
     return db('games').insert(contents)
 }
 
@@ -91,7 +91,7 @@ const getGamesCelebsById = (id) => {
     return db("games_celebs").where({ id: id });
 }
 
-const addGameCeleb = (contents) => {
+const insertGameCeleb = (contents) => {
     return db('games_celebs').insert(contents)
 }
 
@@ -109,7 +109,7 @@ const getGamesUsersById = (id) => {
     return db("games_celebs").where({ id: id });
 }
 
-const addGameUser = (contents) => {
+const insertGameUser = (contents) => {
     return db('games_celebs').insert(contents)
 }
 
@@ -123,25 +123,25 @@ module.exports = {
     insertUser,
     getCelebs,
     getCelebById,
-    addCeleb,
+    insertCeleb,
     updateCeleb,
     deleteCeleb,
     getTweets,
     getTweetById,
-    addTweet,
+    insertTweet,
     updateTweet,
     deleteTweet,
     getGames,
     getGameById,
-    addGame,
+    insertGame,
     updateGame,
     deleteGame,
     getGamesCelebs,
     getGamesCelebsById,
-    addGameCeleb,
+    insertGameCeleb,
     deleteGameCeleb,
     getGamesUsers,
     getGamesUsersById,
-    addGameUser,
+    insertGameUser,
     deleteGameUser
 }
