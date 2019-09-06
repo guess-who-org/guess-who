@@ -15,6 +15,10 @@ const insertUser = async user => {
     return db("users").where({ id }).first();
 }
 
+const deleteUser = (id) => {
+    return db('users').where({ id: id }).del();
+}
+
 // Celebs table
 
 const getCelebs = _ => {
@@ -118,28 +122,35 @@ const deleteGameUser = (id) => {
 }
 
 module.exports = {
+    // User table
     getUsers,
     getUsersByName,
     insertUser,
+    deleteUser,
+    // Celebs table
     getCelebs,
     getCelebById,
     insertCeleb,
     updateCeleb,
     deleteCeleb,
+    // Tweets table
     getTweets,
     getTweetById,
     insertTweet,
     updateTweet,
     deleteTweet,
+    // Game table
     getGames,
     getGameById,
     insertGame,
     updateGame,
     deleteGame,
+    // games_celebs table
     getGamesCelebs,
     getGamesCelebsById,
     insertGameCeleb,
     deleteGameCeleb,
+    // games_users table
     getGamesUsers,
     getGamesUsersById,
     insertGameUser,
