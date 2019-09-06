@@ -26,11 +26,11 @@ const getCelebById = (id) => {
 }
 
 const insertCeleb = (name) => {
-    return db('celebs').insert({ name: name })
+    return db('celebs').insert(name)
 }
 
 const updateCeleb = (id, name) => {
-    return db('celebs').where({ id: id }).update({name: name });
+    return db('celebs').where({ id: id }).update(name);
 }
 
 const deleteCeleb = (id) => {
@@ -102,19 +102,19 @@ const deleteGameCeleb = (id) => {
 // Games_celebs table
 
 const getGamesUsers = _ => {
-    return db('games_celebs');
+    return db('games_users');
 }
 
 const getGamesUsersById = (id) => {
-    return db("games_celebs").where({ id: id });
+    return db("games_users").where({ id: id });
 }
 
 const insertGameUser = (contents) => {
-    return db('games_celebs').insert(contents)
+    return db('games_users').insert(contents)
 }
 
 const deleteGameUser = (id) => {
-    return db('games_celebs').where({ id: id }).del();
+    return db('games_users').where({ id: id }).del();
 }
 
 module.exports = {
