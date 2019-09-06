@@ -4,8 +4,8 @@ const getUsers = _ => {
     return db('users');
 }
 
-const getUsersByName = (username) => {
-    return db("users").where({ username });
+const getUsersByName = username => {
+    return db("users").where({ username }).first();
 }
 
 const insertUser = async user => {
