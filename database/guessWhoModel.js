@@ -4,11 +4,17 @@ const getUsers = _ => {
     return db('users');
 }
 
-const getUsersByName = (name) => {
-    return db("users").where({ name: name });
+const getUsersByName = (username) => {
+    return db("users").where({ username });
+}
+
+const insert = async user => {
+    let [id] = await db("users").insert(user);
+    return db("users").where({ id }).first();
 }
 
 module.exports = {
     getUsers,
-    getUsersByName
+    getUsersByName,
+    insert
 }
