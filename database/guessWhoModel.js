@@ -10,7 +10,7 @@ const getUsersByName = (username) => {
 
 const insert = async user => {
     let [id] = await db("users").insert(user);
-    return db("users").where({ id });
+    return db("users").where({ id }).first();
 }
 
 module.exports = {
