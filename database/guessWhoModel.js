@@ -4,8 +4,13 @@ const getUsers = _ => {
     return db('users');
 }
 
-const getUserByName = (name) => {
-    return db("users").where({ name: name });
+const getUsersByName = (username) => {
+    return db("users").where({ username });
+}
+
+const insertUser = async user => {
+    let [id] = await db("users").insert(user);
+    return db("users").where({ id }).first();
 }
 
 const getCelebs = _ => {
@@ -30,5 +35,7 @@ const deleteCeleb = (id) => {
 
 module.exports = {
     getUsers,
-    getUsersByName
+    getUsersByName,
+    insertUser,
+    getCelebs,
 }
