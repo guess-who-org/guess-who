@@ -113,16 +113,16 @@ const getGamesUsers = _ => {
     return db('games_users');
 }
 
-const getGamesUsersById = (id) => {
-    return db("games_users").where({ id: id });
+const getGamesUsersById = (game_id, user_id) => {
+    return db("games_users").where({ game_id, user_id});
 }
 
 const insertGameUser = (contents) => {
     return db('games_users').insert(contents)
 }
 
-const deleteGameUser = (id) => {
-    return db('games_users').where({ id: id }).del();
+const deleteGameUser = (game_id, user_id) => {
+    return db('games_users').where({ game_id, user_id}).del();
 }
 
 module.exports = {

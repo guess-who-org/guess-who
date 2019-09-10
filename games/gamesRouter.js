@@ -1,10 +1,12 @@
 const express = require('express');
 const model = require('../database/guessWhoModel');
 const gamesCelebsRouter = require('./gamesCelebsRouter');
+const gamesUsersRouter = require('./gamesUsersRouter');
 
 const router = express.Router();
 
 router.use('/games_celebs', gamesCelebsRouter);
+router.use('/games_users', gamesUsersRouter);
 
 router.post('/', validateGame, async (req, res) => {
     try {
