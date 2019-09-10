@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.delete('/', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     const { id } = req.params;
 
     try{
@@ -46,7 +46,7 @@ router.delete('/', async (req, res) => {
 
         const deletedUser = await dbModel.deleteUser(id)
 
-        if (!deletedUser !== 1) {
+        if (deletedUser !== 1) {
             return res.status(500).json({message: "Could delete not user"})
         };
         
