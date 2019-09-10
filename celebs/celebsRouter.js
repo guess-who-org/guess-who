@@ -1,10 +1,7 @@
 const express = require('express');
 const model = require('../database/guessWhoModel');
-const authMiddleware = require('../auth/auth-middleware');
 
 const router = express.Router();
-
-router.use(authMiddleware);
 
 router.post('/', validateCeleb, async (req, res) => {
     try {
@@ -25,7 +22,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.update('/:id', validateCelebId, async (req, res) => {
+router.put('/:id', validateCelebId, async (req, res) => {
     try {
         await model.updateCeleb(req.params.id, req.body);
         let celeb = await model.getCelebById(req.params.id);
@@ -56,7 +53,7 @@ function validateCeleb(req, res, next) {
     }
 }
 
-function validateCelebId(req, res, next) {
+async function validateCelebId(req, res, next) {
     let celeb = await model.getCelebById(req.params.id).first();
     if (celeb) {
         req.celeb = celeb;
@@ -65,3 +62,5 @@ function validateCelebId(req, res, next) {
         res.status(404).json({ message: 'The celeb with the specified ID does not exist.'});
     }
 }
+
+module.exports = router;

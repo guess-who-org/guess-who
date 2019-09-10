@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets');
 
-const authMiddleware = (req, res, next) => {
+module.exports = (req, res, next) => {
     if (req.headers.token) {
         try {
             jwt.verify(req.headers.token, secrets.jwtSecret);
@@ -12,6 +12,4 @@ const authMiddleware = (req, res, next) => {
     } else {
         res.status(400).json({ message: 'Missing token.' });
     }
-}
-
-module.exports = authMiddleware;
+};
