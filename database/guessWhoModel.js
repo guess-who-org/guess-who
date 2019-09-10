@@ -15,6 +15,10 @@ const insertUser = async user => {
     return db("users").where({ id }).first();
 }
 
+const deleteUser = (id) => {
+    return db('users').where({ id: id }).del();
+}
+
 // Celebs table
 
 const getCelebs = _ => {
@@ -26,11 +30,11 @@ const getCelebById = (id) => {
 }
 
 const insertCeleb = (name) => {
-    return db('celebs').insert({ name: name })
+    return db('celebs').insert(name)
 }
 
 const updateCeleb = (id, name) => {
-    return db('celebs').where({ id: id }).update({name: name });
+    return db('celebs').where({ id: id }).update(name);
 }
 
 const deleteCeleb = (id) => {
@@ -102,44 +106,51 @@ const deleteGameCeleb = (id) => {
 // Games_celebs table
 
 const getGamesUsers = _ => {
-    return db('games_celebs');
+    return db('games_users');
 }
 
 const getGamesUsersById = (id) => {
-    return db("games_celebs").where({ id: id });
+    return db("games_users").where({ id: id });
 }
 
 const insertGameUser = (contents) => {
-    return db('games_celebs').insert(contents)
+    return db('games_users').insert(contents)
 }
 
 const deleteGameUser = (id) => {
-    return db('games_celebs').where({ id: id }).del();
+    return db('games_users').where({ id: id }).del();
 }
 
 module.exports = {
+    // User table
     getUsers,
     getUsersByName,
     insertUser,
+    deleteUser,
+    // Celebs table
     getCelebs,
     getCelebById,
     insertCeleb,
     updateCeleb,
     deleteCeleb,
+    // Tweets table
     getTweets,
     getTweetById,
     insertTweet,
     updateTweet,
     deleteTweet,
+    // Game table
     getGames,
     getGameById,
     insertGame,
     updateGame,
     deleteGame,
+    // games_celebs table
     getGamesCelebs,
     getGamesCelebsById,
     insertGameCeleb,
     deleteGameCeleb,
+    // games_users table
     getGamesUsers,
     getGamesUsersById,
     insertGameUser,
