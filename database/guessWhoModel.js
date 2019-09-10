@@ -6,8 +6,8 @@ const getUsers = _ => {
     return db('users');
 }
 
-const getUsersByName = username => {
-    return db("users").where({ username }).first();
+const getUserById = (id) => {
+    return db("users").where({ id: id }).first();
 }
 
 const insertUser = async user => {
@@ -124,7 +124,7 @@ const deleteGameUser = (id) => {
 module.exports = {
     // User table
     getUsers,
-    getUsersByName,
+    getUserById,
     insertUser,
     deleteUser,
     // Celebs table
