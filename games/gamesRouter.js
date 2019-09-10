@@ -1,7 +1,10 @@
 const express = require('express');
 const model = require('../database/guessWhoModel');
+const gamesCelebsRouter = require('./gamesCelebsRouter');
 
 const router = express.Router();
+
+router.use('/games_celebs', gamesCelebsRouter);
 
 router.post('/', validateGame, async (req, res) => {
     try {
@@ -44,7 +47,7 @@ router.delete('/:id', validateGameId, async (req, res) => {
 function validateGame(req, res, next) {
     if (req.body) {
         if (req.body.title) {
-            next()
+            next();
         } else {
             res.status(400).json({ message: 'Missing required title field.' });
         }

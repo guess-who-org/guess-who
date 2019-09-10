@@ -51,8 +51,7 @@ exports.up = function(knex) {
             .notNullable()
             .unsigned()
             .references('id')
-            .inTable('userss')
-            .notNullable();
+            .inTable('users');
         table.primary(['game_id', 'user_id']);
     })
 };

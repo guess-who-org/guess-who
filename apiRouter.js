@@ -8,7 +8,7 @@ const gamesRouter = require('./games/gamesRouter');
 const router = express.Router();
 
 router.use('/auth', authRouter);
-router.use('/users' ,userRouter);
+router.use('/users', userRouter);
 router.use('/celebs', authMiddleware, celebsRouter);
 router.use('/games', authMiddleware, gamesRouter);
 
