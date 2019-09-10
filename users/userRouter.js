@@ -13,6 +13,17 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:id', async (req, res) => {
+    const { id } = req.params;
+    try{
+        const user = await dbModel.getUserById(id);
+        return res.status(200).json(user)
+    }
+    catch (err) {
+        return res.status(500).json({err: err.message})
+    }
+});
+
 router.post('/', async (req, res) => {
     let user = req.body;
 
